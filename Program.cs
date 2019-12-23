@@ -21,7 +21,21 @@ namespace take_home_methods
                       takeHomePay;
         static void Main(string[] args)
         {
-            WriteLine("Hello World!");
+            Write("Employee Name: ");
+            employeeName = ReadLine();
+            employeeSales = ReadDouble("Weekly Sales:");
+        }
+        static double ReadDouble(string label)
+        {
+            Write("{0} ", label);
+            double number;
+            string userInput = ReadLine();
+            while (Double.TryParse(userInput, out number) == false)
+            {
+                Write("{0}{1} ", "Invalid input!\n", label);
+                userInput = ReadLine();
+            }
+            return number;
         }
     }
 }
