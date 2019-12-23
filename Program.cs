@@ -25,6 +25,7 @@ namespace take_home_methods
             employeeName = ReadLine();
             employeeSales = ReadDouble("Weekly Sales:");
             CalculateResults();
+            WriteLine(DisplayResults());
         }
         static double ReadDouble(string label)
         {
@@ -46,6 +47,20 @@ namespace take_home_methods
             socialSecurity = employeeCommission * SOCIAL_SECURITY;
             totalDeductions = federalTax + retirementContrib + socialSecurity;
             takeHomePay = employeeCommission - totalDeductions;
+        }
+        static string DisplayResults()
+        {
+            string result = String.Format("\n****** Take-Home Pay Calculator ******\n");
+            result += String.Format("* {0, 18}{1, 16} *\n", "Employee Name:", employeeName);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Weekly Sales:", employeeSales);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Commission:", employeeCommission);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Federal Tax:", federalTax);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Retirement:", retirementContrib);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Social Security:", socialSecurity);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Total Deductions:", totalDeductions);
+            result += String.Format("* {0, 18}{1, 16:C} *\n", "Take-Home Pay:", takeHomePay);
+            result += String.Format("**************************************\n");
+            return result;
         }
     }
 }
