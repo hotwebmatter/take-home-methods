@@ -24,6 +24,7 @@ namespace take_home_methods
             Write("Employee Name: ");
             employeeName = ReadLine();
             employeeSales = ReadDouble("Weekly Sales:");
+            CalculateResults();
         }
         static double ReadDouble(string label)
         {
@@ -36,6 +37,15 @@ namespace take_home_methods
                 userInput = ReadLine();
             }
             return number;
+        }
+        static void CalculateResults()
+        {
+            employeeCommission = employeeSales * COMMISSION;
+            federalTax = employeeCommission * FEDERAL_TAX_RATE;
+            retirementContrib = employeeCommission * RETIREMENT_CONTRIB;
+            socialSecurity = employeeCommission * SOCIAL_SECURITY;
+            totalDeductions = federalTax + retirementContrib + socialSecurity;
+            takeHomePay = employeeCommission - totalDeductions;
         }
     }
 }
